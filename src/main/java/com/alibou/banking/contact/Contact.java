@@ -2,10 +2,9 @@ package com.alibou.banking.contact;
 
 
 
+import com.alibou.banking.common.AbstractEntity;
 import com.alibou.banking.user.User;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
@@ -13,7 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+import lombok.experimental.SuperBuilder;
 
 
 @Entity
@@ -21,11 +20,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "CONTACT")
-public class Contact {
-    @Id
-    @GeneratedValue
-    private Long id;
+@SuperBuilder
+@Table(name = "CONTACTS")
+public class Contact extends AbstractEntity {
+
     private String firstName;
     private String lastName;
     private String iban;
