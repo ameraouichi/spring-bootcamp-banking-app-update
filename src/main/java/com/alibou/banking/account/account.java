@@ -36,6 +36,4 @@ public class Account extends AbstractEntity {
     private User user;
 
 
-
-
 }
