@@ -1,7 +1,9 @@
 package com.alibou.banking.account;
 
 
-import com.alibou.banking.user.user;
+import com.alibou.banking.common.AbstractEntity;
+import com.alibou.banking.user.User;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,7 +16,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -22,15 +26,16 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "ACCOUNT")
-public class account {
-    @Id
-    @GeneratedValue
-    private Long id;
+@SuperBuilder
+@Table(name = "ACCOUNTS")
+public class Account extends AbstractEntity {
+
     private String iban;
     @OneToOne
-    @JoinColumn(name = "user")
-    private user user;
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
 
 
 }

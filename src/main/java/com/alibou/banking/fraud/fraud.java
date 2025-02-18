@@ -1,6 +1,8 @@
 package com.alibou.banking.fraud;
 
-import com.alibou.banking.transaction.transaction;
+import com.alibou.banking.common.AbstractEntity;
+import com.alibou.banking.transaction.Transaction;
+
 
 
 import jakarta.persistence.Entity;
@@ -14,6 +16,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
+
 import java.time.LocalDateTime;
 
 
@@ -22,18 +26,17 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "FRAUD")
-public class fraud {
-    @Id
-    @GeneratedValue
-    private Long id;
+@SuperBuilder
+@Table(name = "FRAUDS")
+public class Fraud extends AbstractEntity {
+
     @Enumerated(EnumType.STRING)
-    private fraudType type;
+    private FraudType type;
     @Enumerated(EnumType.STRING)
-    private fraudStatus status;
+    private FraudStatus status;
     private LocalDateTime date;
     @OneToOne
-    private transaction transaction;
+    private Transaction transaction;
 
 
 }
